@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "309013368429",
+    "project_id": "certify-72d28",
+    "storage_bucket": "certify-72d28.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:309013368429:android:f5a285ae35b1cc2e093964",
+        "android_client_info": {
+          "package_name": "com.kodecamp.certify"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "309013368429-f7am49tqcdq7dli09ofhf3a2hf8i6gv8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kodecamp.certify",
+            "certificate_hash": "1b2ae153ef447022ec1632304b564c275032e8d8"
+          }
+        },
+        {
+          "client_id": "309013368429-9usmtu25krubeu0v10stqg7267n3mgg4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCGYlUOgtcjETbJVZUSXhQOI7vbS3BRsnI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "309013368429-9usmtu25krubeu0v10stqg7267n3mgg4.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "309013368429-cchj00c0sespabk01mduas725h8i4jb6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.kodecamp.certify"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

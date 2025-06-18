@@ -2,7 +2,7 @@ name: certify
 description: "A new Flutter project."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -34,6 +34,22 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
+  firebase_core: ^3.14.0
+  firebase_auth: ^5.6.0
+  google_sign_in: ^6.3.0
+  encrypt: ^5.0.3
+  qr_flutter: ^4.1.0
+  path_provider: ^2.1.5
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  get: ^4.7.2
+  json_annotation: ^4.9.0
+  google_fonts: 6.0.0
+  http: ^1.4.0
+  dio: ^5.8.0+1
+  qr_code_tools: ^0.2.0
+  image_picker: ^1.1.2
+  uuid: ^4.5.1
 
 dev_dependencies:
   flutter_test:
@@ -45,21 +61,22 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^5.0.0
+  build_runner: ^2.5.0
+  json_serializable: ^6.9.5
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter packages.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+    - assets/env.json
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

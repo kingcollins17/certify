@@ -5,6 +5,8 @@ import 'package:flutter/foundation.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:uuid/uuid.dart';
 
+import 'package:intl/intl.dart'; // Add this import at the top
+
 class HelperUtility {
   HelperUtility._internal();
 
@@ -55,4 +57,9 @@ class HelperUtility {
 
   /// Generates a UUID v4 string
   String generateUuid4() => _uuid.v4();
+
+  /// Formats DateTime to something like "Dec 15, 2024"
+  String formatDate(DateTime date) {
+    return DateFormat('MMM d, y').format(date);
+  }
 }

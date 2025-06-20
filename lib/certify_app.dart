@@ -11,6 +11,7 @@ class CertifyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       getPages: CertifyRoutes.getRoutes(),
+      initialRoute: '/',
       initialBinding: CertifyBindings(),
     );
   }

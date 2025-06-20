@@ -56,7 +56,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   void _signUp() {
     if (_formKey.currentState!.validate()) {
-      // Implement sign up Logic here
+      _authController.signUpWithEmail(
+        _emailController.text.trim(),
+        _passwordController.text.trim(),
+      );
     }
   }
 

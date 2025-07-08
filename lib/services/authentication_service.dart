@@ -9,6 +9,12 @@ abstract interface class AuthenticationService {
     required String password,
   });
 
+  /// Registers a new user using email and password.
+  Future<Account> signUpWithEmailAndPassword({
+    required String email,
+    required String password,
+  });
+
   /// Signs in using Google Sign-In.
   Future<Account> signInWithGoogle();
 
@@ -27,7 +33,6 @@ class AuthenticationServiceImpl implements AuthenticationService {
     scopes: ['email', 'https://www.googleapis.com/auth/drive.file'],
   );
 
-  /// Exposes Firebase's onAuthStateChanged stream.
   @override
   Stream<User?> get userStream => _firebase.authStateChanges();
 
@@ -37,6 +42,18 @@ class AuthenticationServiceImpl implements AuthenticationService {
     required String password,
   }) async {
     final credential = await _firebase.signInWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
+    return _getAccount(credential);
+  }
+
+  @override
+  Future<Account> signUpWithEmailAndPassword({
+    required String email,
+    required String password,
+  }) async {
+    final credential = await _firebase.createUserWithEmailAndPassword(
       email: email,
       password: password,
     );

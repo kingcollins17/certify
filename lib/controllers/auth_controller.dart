@@ -8,7 +8,11 @@ abstract interface class AuthController {
   RxnString get accessToken;
   RxBool get isLoading;
 
+  bool get isAuthenticated;
+
   Future<void> signInWithEmail(String email, String password);
+
+  Future<void> signUpWithEmail(String email, String password);
   Future<void> signInWithGoogle();
 }
 
@@ -19,6 +23,9 @@ class AuthControllerImpl extends GetxController implements AuthController {
   final RxnString _accessToken = RxnString();
   final RxBool _isLoading = false.obs;
 
+  @override
+  bool get isAuthenticated =>
+      _account.value != null && _accessToken.value != null;
   @override
   Rxn<Account> get account => _account;
 
@@ -54,6 +61,7 @@ class AuthControllerImpl extends GetxController implements AuthController {
       );
       _account.value = result;
       _accessToken.value = result.accessToken;
+      Get.toNamed('/');
     } catch (e) {
       Get.snackbar(
         'Login Failed',
@@ -75,6 +83,7 @@ class AuthControllerImpl extends GetxController implements AuthController {
       final result = await _authService.signInWithGoogle();
       _account.value = result;
       _accessToken.value = result.accessToken;
+      Get.toNamed('/');
     } catch (e) {
       Get.snackbar(
         'Google Sign-In Failed',
@@ -95,5 +104,30 @@ class AuthControllerImpl extends GetxController implements AuthController {
       return error.message ?? 'An unknown Firebase error occurred';
     }
     return error.toString();
+  }
+
+  @override
+  Future<void> signUpWithEmail(String email, String password) async {
+    _isLoading.value = true;
+    try {
+      final result = await _authService.signUpWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      _account.value = result;
+      _accessToken.value = result.accessToken;
+      Get.toNamed('/'); // Or route to a welcome/setup page if needed
+    } catch (e) {
+      Get.snackbar(
+        'Sign Up Failed',
+        _formatError(e),
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Get.theme.colorScheme.error.withOpacity(0.2),
+        colorText: Get.theme.colorScheme.error,
+        duration: const Duration(seconds: 3),
+      );
+    } finally {
+      _isLoading.value = false;
+    }
   }
 }

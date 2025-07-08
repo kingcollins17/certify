@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:convert';
 
 import 'package:encrypt/encrypt.dart' as enc;
 import '../models/env.dart';

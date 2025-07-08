@@ -9,9 +9,10 @@ class CustomTextField extends StatefulWidget {
   final TextEditingController controller;
   final String? Function(String?)? validator;
   final TextInputType keyboardType;
+  final void Function(String)? onChanged;
 
   const CustomTextField({
-    Key? key,
+    super.key,
     required this.label,
     required this.hint,
     required this.controller,
@@ -19,7 +20,8 @@ class CustomTextField extends StatefulWidget {
     this.prefixIcon,
     this.validator,
     this.keyboardType = TextInputType.text,
-  }) : super(key: key);
+    this.onChanged,
+  });
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();

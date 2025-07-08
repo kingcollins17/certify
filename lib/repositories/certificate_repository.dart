@@ -22,4 +22,7 @@ abstract interface class CertificateRepository {
 
   /// Group certificates by a custom logic (e.g., by issuer or owner)
   Future<List<CertificateGroup>> groupCertificatesByIssuer();
+
+  /// Add a new certificate group
+  Future<void> addCertificateGroup(CertificateGroup group);
 }

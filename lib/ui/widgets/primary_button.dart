@@ -1,33 +1,41 @@
 import 'package:flutter/material.dart';
 
-import 'package:certify/utils/utils.dart';
+import '../../utils/utils.dart';
 
-class PrimaryButton extends StatelessWidget {
+typedef PrimaryButton = PrimaryActionButton;
+typedef ReusableButton = PrimaryActionButton;
+
+class PrimaryActionButton extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;
   final bool isLoading;
+  final IconData? icon;
   final double? width;
   final double height;
 
-  const PrimaryButton({
-    Key? key,
+  const PrimaryActionButton({
+    super.key,
     required this.text,
     required this.onPressed,
     this.isLoading = false,
+    this.icon,
     this.width,
     this.height = 52,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
+    final bgColor =
+        isLoading ? AppColors.primary.withOpacity(0.6) : AppColors.primary;
+
     return SizedBox(
       width: width ?? double.infinity,
       height: height,
       child: ElevatedButton(
         onPressed: isLoading ? null : onPressed,
         style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.primary,
-          disabledBackgroundColor: AppColors.primary.withOpacity(0.6),
+          backgroundColor: bgColor,
+          disabledBackgroundColor: bgColor,
           elevation: 0,
           shadowColor: Colors.transparent,
           shape: RoundedRectangleBorder(
@@ -44,7 +52,15 @@ class PrimaryButton extends StatelessWidget {
                     valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
                   ),
                 )
-                : Text(text, style: t16w600.copyWith(color: Colors.white)),
+                : Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    if (icon != null) Icon(icon, color: Colors.white, size: 20),
+                    if (icon != null) const SizedBox(width: 8),
+                    Text(text, style: t16w600.copyWith(color: Colors.white)),
+                  ],
+                ),
       ),
     );
   }

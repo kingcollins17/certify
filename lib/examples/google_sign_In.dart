@@ -23,13 +23,13 @@ Future<UserCredential> signInWithGoogle() async {
   }
 
   // Step 2: Retrieve the authentication tokens from Google.
-  final GoogleSignInAuthentication? googleAuth =
+  final GoogleSignInAuthentication googleAuth =
       await googleUser.authentication;
 
   // Step 3: Create a Firebase credential using the tokens from Google.
   final OAuthCredential credential = GoogleAuthProvider.credential(
-    accessToken: googleAuth?.accessToken,
-    idToken: googleAuth?.idToken,
+    accessToken: googleAuth.accessToken,
+    idToken: googleAuth.idToken,
   );
 
   // Step 4: Sign in to Firebase with the Google credential.

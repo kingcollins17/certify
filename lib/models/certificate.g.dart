@@ -10,9 +10,11 @@ Certificate _$CertificateFromJson(Map<String, dynamic> json) => Certificate(
   id: json['id'] as String,
   title: json['title'] as String,
   issuedAt: DateTime.parse(json['issuedAt'] as String),
-  issuer: Issuer.fromJson(json['issuer'] as Map<String, dynamic>),
-  owner: CertificateOwner.fromJson(json['owner'] as Map<String, dynamic>),
+  issuer: Issuer.fromJson(json['issuer']),
+  owner: CertificateOwner.fromJson(json['owner']),
+  groupId: json['groupId'] as String?,
   fileUrl: json['fileUrl'] as String?,
+  qrCodeUrl: json['qrCodeUrl'] as String?,
 );
 
 Map<String, dynamic> _$CertificateToJson(Certificate instance) =>
@@ -23,6 +25,8 @@ Map<String, dynamic> _$CertificateToJson(Certificate instance) =>
       'issuer': instance.issuer.toJson(),
       'owner': instance.owner.toJson(),
       'fileUrl': instance.fileUrl,
+      'qrCodeUrl': instance.qrCodeUrl,
+      'groupId': instance.groupId,
     };
 
 Issuer _$IssuerFromJson(Map<String, dynamic> json) =>

@@ -3,7 +3,10 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:uuid/uuid.dart';
+
+import 'package:intl/intl.dart';
 
 class HelperUtility {
   HelperUtility._internal();
@@ -55,4 +58,25 @@ class HelperUtility {
 
   /// Generates a UUID v4 string
   String generateUuid4() => _uuid.v4();
+
+  /// Formats DateTime to something like "Dec 15, 2024"
+  String formatDate(DateTime date) {
+    return DateFormat('MMM d, y').format(date);
+  }
+
+  /// Shares a plain text message
+  Future<void> shareText(String message, {String? subject}) async {
+    await Share.share(message, subject: subject);
+  }
+
+  /// Shares a file with optional accompanying text
+  Future<void> shareFile(File file, {String? text}) async {
+    await Share.shareXFiles([XFile(file.path)], text: text);
+  }
+
+  /// Shares multiple files with optional text
+  Future<void> shareMultipleFiles(List<File> files, {String? text}) async {
+    final xFiles = files.map((f) => XFile(f.path)).toList();
+    await Share.shareXFiles(xFiles, text: text);
+  }
 }

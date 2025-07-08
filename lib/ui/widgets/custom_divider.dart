@@ -5,7 +5,7 @@ import 'package:certify/utils/utils.dart';
 class CustomDivider extends StatelessWidget {
   final String text;
 
-  const CustomDivider({Key? key, required this.text}) : super(key: key);
+  const CustomDivider({super.key, required this.text});
 
   @override
   Widget build(BuildContext context) {
